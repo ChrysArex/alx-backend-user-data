@@ -20,9 +20,8 @@ class BasicAuth(Auth):
             return None
         return authorization_header[6:]
 
-
-    def decode_base64_authorization_header(self,
-            base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+            self, base64_authorization_header: str) -> str:
         """returns the decoded value of a Base64 string
             base64_authorization_header:
         """
@@ -30,10 +29,7 @@ class BasicAuth(Auth):
             return None
         if type(base64_authorization_header) is not str:
             return None
-        try:
-            b64decode(base64_authorization_header)
-        except:
-            return None
+        b64decode(base64_authorization_header)
         out = StringIO()
         decode(StringIO(base64_authorization_header), out)
         return out.readline()
